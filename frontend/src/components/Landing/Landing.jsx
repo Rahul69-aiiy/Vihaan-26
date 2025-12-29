@@ -238,7 +238,7 @@ export default function Landing() {
             </p>
 
             <div className="mb-4 text-lg reg tracking-wide">REGISTER AT</div>
-            <Button text="Devfolio" />
+            <Button text="Register" />
           </motion.div>
 
           <hr
