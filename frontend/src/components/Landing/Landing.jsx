@@ -266,7 +266,7 @@ export default function Landing() {
             animate-fade-in
           "
         >
-          🚧 Coming Soon
+          🚧-Coming Soon
         </div>
       )}
     </>
