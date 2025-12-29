@@ -13,7 +13,7 @@ export default function Footer() {
         {/* LOGO */}
         <div className="flex flex-col items-center">
           <img
-            src="../vihaanlogo.svg"
+            src="../logo.svg"
             alt="Vihaan Logo"
             className="w-36 md:w-48"
           />

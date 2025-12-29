@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+
 import SubscribeGate from "./utils/SubscribeGate.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Intro from "./components/Loader.jsx";
@@ -7,14 +8,22 @@ import Landing2 from "./components/Landing2.jsx";
 import Faqs from "./components/Faqs/faqs.jsx";
 import Gallery from "./components/Gallery/Gallery.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+
+import { Volume2, VolumeX } from "lucide-react";
 import "./App.css";
 
 function App() {
   const [showGate, setShowGate] = useState(true);
   const [showIntro, setShowIntro] = useState(false);
 
-  const introAudioRef = useRef(new Audio("/audio/intro.mp3"));
+  const [muted, setMuted] = useState(
+    () => localStorage.getItem("bg-muted") === "true"
+  );
 
+  const introAudioRef = useRef(new Audio("/audio/intro.mp3"));
+  const bgAudioRef = useRef(new Audio("/audio/bg-audio.mp3"));
+
+  /* Cleanup intro audio */
   useEffect(() => {
     return () => {
       introAudioRef.current.pause();
@@ -22,14 +31,59 @@ function App() {
     };
   }, []);
 
+  /* 🔊 Background audio lifecycle */
+  useEffect(() => {
+    if (!showGate && !showIntro) {
+      const bgAudio = bgAudioRef.current;
+
+      bgAudio.loop = true;
+      bgAudio.volume = muted ? 0 : 0.25;
+      bgAudio.currentTime = 0;
+
+      bgAudio.play().catch(() => {});
+    }
+
+    return () => {
+      bgAudioRef.current.pause();
+      bgAudioRef.current.currentTime = 0;
+    };
+  }, [showGate, showIntro, muted]);
+
+  /* Persist mute state */
+  useEffect(() => {
+    localStorage.setItem("bg-muted", muted);
+    bgAudioRef.current.volume = muted ? 0 : 0.25;
+  }, [muted]);
+
   return (
     <>
+   
+      {!showGate && !showIntro && (
+        <button
+        onClick={() => setMuted((m) => !m)}
+        aria-label={muted ? "Unmute background audio" : "Mute background audio"}
+        className="
+          fixed md:left-4
+          top-6 left-[calc(50%-18px)]
+          z-[9999]
+          flex items-center justify-center
+          w-9 h-9 rounded-full
+          bg-black/50 backdrop-blur-md
+          text-white hover:bg-black/70
+          transition
+        "
+      >
+        {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+      </button>
+
+      )}
+
       {/* SUBSCRIBE GATE */}
       {showGate && (
         <SubscribeGate
           onContinue={() => {
             introAudioRef.current.currentTime = 0;
-            introAudioRef.current.volume = 0.1;
+            introAudioRef.current.volume = 0.5;
             introAudioRef.current.play().catch(() => {});
 
             setShowGate(false);
@@ -44,8 +98,6 @@ function App() {
           <Intro
             audioRef={introAudioRef}
             onComplete={() => {
-              console.log("Intro complete!");
-
               introAudioRef.current.pause();
               introAudioRef.current.currentTime = 0;
               introAudioRef.current.volume = 0;
@@ -57,7 +109,7 @@ function App() {
       )}
 
       {/* MAIN CONTENT */}
-      {!showIntro && !showGate && (
+      {!showGate && !showIntro && (
         <>
           <div id="landing">
             <Landing />

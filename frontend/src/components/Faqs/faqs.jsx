@@ -18,7 +18,7 @@ export default function Faqs() {
               fontSize: "clamp(48px, 8vw, 112px)",
               backgroundImage: "linear-gradient(#f9f9f9, #f9f9f9)",
               WebkitTextStroke: '2px black',
-              zIndex: '10',
+              zIndex: '1',
               lineHeight: 1.1,
               maxWidth: '100vw',
               overflow: 'visible',
@@ -55,7 +55,7 @@ export default function Faqs() {
             style={{
               
               marginTop: '5rem',
-              height: '100vh'
+              height: 'auto'
             }}>
          
             <div className="faq-accordions" >

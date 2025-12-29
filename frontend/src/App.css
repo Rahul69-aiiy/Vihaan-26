@@ -7,6 +7,7 @@ body {
 html{
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  lazyload: true;
 }
 
 .font-bangers {

@@ -2,15 +2,15 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 
 // Images
-import img1 from "/loadingsvgs/img1.svg";
-import img2 from "/loadingsvgs/img2.svg";
-import img3 from "/loadingsvgs/img3.svg";
-import img4 from "/loadingsvgs/img4.svg";
-import img5 from "/loadingsvgs/img5.svg";
-import img6 from "/loadingsvgs/img6.svg";
-import img7 from "/loadingsvgs/img7.svg";
-import img8 from "/loadingsvgs/img8.svg";
-import img9 from "/loadingsvgs/img9.svg";
+import img1 from "/Gallerysvgs/c1-1.png";
+import img2 from "/Gallerysvgs/c2-1.png";
+import img3 from "/Gallerysvgs/c3-1.png";
+import img4 from "/Gallerysvgs/c4-1.png";
+import img5 from "/Gallerysvgs/c5-1.png";
+import img6 from "/Gallerysvgs/c6-1.png";
+import img7 from "/Gallerysvgs/c7-1.png";
+import img8 from "/Gallerysvgs/c13-1.png";
+import img9 from "/Gallerysvgs/c14-1.png";
 import img from "../assets/image.png"; // Final Image
 
 const actionPanels = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
