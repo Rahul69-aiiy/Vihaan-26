@@ -10,6 +10,35 @@ export default function Landing() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
+
+      useEffect(() => {
+        if (!showRegisterModal) return;
+
+        // Remove old SDK if exists
+        const oldScript = document.getElementById("devfolio-sdk");
+        if (oldScript) oldScript.remove();
+
+        const script = document.createElement("script");
+        script.id = "devfolio-sdk";
+        script.src = "https://apply.devfolio.co/v2/sdk.js";
+        script.async = true;
+        script.defer = true;
+
+        document.body.appendChild(script);
+
+        return () => {
+          script.remove();
+        };
+      }, [showRegisterModal]);
+
+
+        useEffect(() => {
+          document.body.style.overflow =
+            open || showRegisterModal ? "hidden" : "auto";
+        }, [open, showRegisterModal]);
+
 
   useEffect(() => {
     const resize = () => setMobile(window.innerWidth < 900);
@@ -238,7 +267,8 @@ export default function Landing() {
             </p>
 
             <div className="mb-4 text-lg reg tracking-wide">REGISTER AT</div>
-            <Button text="Register" />
+
+            <Button text="Register" setShowRegisterModal={setShowRegisterModal} />
           </motion.div>
 
           <hr
@@ -268,7 +298,76 @@ export default function Landing() {
         >
           🚧 Coming Soon
         </div>
+        
       )}
+
+      {showRegisterModal &&
+  createPortal(
+    <motion.div
+      className="fixed inset-0 z-[100000] flex items-start justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* BACKDROP */}
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-md"
+        onClick={() => setShowRegisterModal(false)}
+      />
+
+      {/* MODAL CARD */}
+      <motion.div
+        initial={{ y: -60, opacity: 0 }}
+        animate={{ y: 40, opacity: 1 }}
+        exit={{ y: -60, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        className="
+          relative z-10
+          bg-white text-black
+          rounded-2xl
+          shadow-2xl
+          px-10 py-8
+          mt-20
+          w-[90%] max-w-md
+        "
+      >
+        {/* CLOSE */}
+        <button
+          className="absolute top-4 right-4 text-2xl font-bold text-black/60 hover:text-black"
+          onClick={() => setShowRegisterModal(false)}
+        >
+          ✕
+        </button>
+
+  {/* TITLE */}
+  <h2
+    style={{
+      fontFamily: '"Bangers", "Impact", sans-serif',
+      color: '#FFFFFF',
+      fontSize: '2rem',
+      WebkitTextStroke: '1px black',
+      textShadow: '2px 2px 0px #000000',
+      textAlign: 'center',
+    }}
+    className="mb-6"
+  >
+    Register for VIHAAN 9.0
+  </h2>
+
+        {/* DEVFOLIO BUTTON */}
+            <div className="flex justify-center">
+              <div
+                className="apply-button"
+                data-hackathon-slug="vihaan-9"
+                data-button-theme="dark"
+              ></div>
+          </div>
+
+      </motion.div>
+    </motion.div>,
+    document.body
+  )}
+
     </>
   );
 }
