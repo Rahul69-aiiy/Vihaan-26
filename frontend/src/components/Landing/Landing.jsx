@@ -358,7 +358,7 @@ export default function Landing() {
             <div className="flex justify-center">
               <div
                 className="apply-button"
-                data-hackathon-slug="vihaan-9"
+                data-hackathon-slug="Vihaan-9"
                 data-button-theme="dark"
               ></div>
           </div>
