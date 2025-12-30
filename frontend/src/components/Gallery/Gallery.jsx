@@ -154,6 +154,12 @@ function DefaultSwapy() {
           })}
         </div>
       </SwapyLayout>
+      <hr
+            className="
+              glow-hr
+              border-0 h-2 w-full
+              bg-linear-to-r from-transparent via-[#ffc800] to-transparent
+            "/>
     </div>
   );
 }

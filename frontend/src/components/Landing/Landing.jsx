@@ -65,7 +65,7 @@ export default function Landing() {
     setTimeout(() => setShowComingSoon(false), 2500);
   };
 
-  const navItems = ["ABOUT", "SCHEDULE", "PRIZES", "TRACKS", "GALLERY", "FAQS"];
+  const navItems = ["ABOUT", "SCHEDULE", "PRIZES", "TRACKS", "GALLERY", "SPONSORS", "FAQS"];
 
   return (
     <>
@@ -232,6 +232,14 @@ export default function Landing() {
                         className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
                       >
                         GALLERY
+                      </a>
+
+                      <a
+                        href="#sponsors"
+                        onClick={() => setOpen(false)}
+                        className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
+                      >
+                        SPONSORS
                       </a>
 
                       <a
