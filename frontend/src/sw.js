@@ -1,16 +1,11 @@
-import { precacheAndRoute } from 'workbox-precaching'
-
-self.addEventListener('install', () => {
-  self.skipWaiting()
-})
-
-self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim())
-})
-
+import { precacheAndRoute, clientsClaim  } from 'workbox-precaching'
 
 // ✅ Handle precaching by Workbox
 precacheAndRoute(self.__WB_MANIFEST)
+
+self.skipWaiting()
+clientsClaim()
+
 
 // ✅ Push event listener
 self.addEventListener('push', event => {
@@ -54,6 +49,7 @@ self.addEventListener('push', event => {
     self.registration.showNotification(title, options)
   );
 });
+
 
 // ✅ Handle notification click
 self.addEventListener('notificationclick', event => {
