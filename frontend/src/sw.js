@@ -1,4 +1,5 @@
-import { precacheAndRoute, clientsClaim  } from 'workbox-precaching'
+import { precacheAndRoute  } from 'workbox-precaching'
+import { clientsClaim } from 'workbox-core'
 
 // ✅ Handle precaching by Workbox
 precacheAndRoute(self.__WB_MANIFEST)

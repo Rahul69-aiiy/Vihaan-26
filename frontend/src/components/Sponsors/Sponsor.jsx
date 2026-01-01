@@ -52,7 +52,7 @@ export default function Sponsor() {
                 transition={{ delay: 0.5 }}
                 className="mt-8 text-center"
             >
-                <p className="text-lg text-gray-400">More coming soon...</p>
+                <p className="text-lg text-gray-400">More coming soon....</p>
             </motion.div>
         </div>
     );
