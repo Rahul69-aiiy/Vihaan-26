@@ -150,7 +150,7 @@
 
 
 .banner .content .model {
-    background-image: url(/Track/model.png); /* Ensure this path is correct */
+    background-image: url(/Track/model.webp); /* Ensure this path is correct */
     width: 100%;
     height: 75vh;
     position: absolute;
