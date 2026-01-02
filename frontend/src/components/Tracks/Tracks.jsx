@@ -44,7 +44,7 @@ const Tracks = () => {
       <motion.div
         className="banner"
       >
-        <img src="/aboutUsBorder.svg" alt="Decorative Border" className="pointer-events-none absolute bottom-0 right-0 -z-1 w-[40%] h-[30%]" />
+        <img src="/aboutUsBorder.svg" alt="Decorative Border" className="pointer-events-none absolute bottom-0 right-0 z-2 w-[40%] h-[30%]" />
         <div className="slider" style={{ "--quantity": 7 }}>
           {[...Array(7)].map((_, index) => (
             <motion.div
@@ -55,7 +55,7 @@ const Tracks = () => {
               
             >
               <div className="click-text heading">Track {index + 1}<br />Coming Soon...</div>
-              <img src="/Track/card.svg" alt={`Track ${index + 1}`} />
+              <img src="/Track/card.png" alt={`Track ${index + 1}`} />
               <div className="click-indicator"><span className="arrow heading">⌄</span></div>
             </motion.div>
           ))}
@@ -75,7 +75,7 @@ const Tracks = () => {
           onClick={() => setActiveTrack(null)}
         >
           <motion.div className="track-flip" onClick={(e) => e.stopPropagation()} initial={{ scale: 0.5 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 200 }}>
-            <div className="track-face track-front"><img src="/Track/card.svg" alt="Track Front" /></div>
+            <div className="track-face track-front"><img src="/Track/card.png" alt="Track Front" /></div>
             <div className="track-face track-back">
               <button className="track-close" onClick={() => setActiveTrack(null)} aria-label="Close">✕</button>
               <h2>Track {activeTrack + 1}</h2>

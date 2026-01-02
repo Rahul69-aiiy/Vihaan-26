@@ -70,7 +70,7 @@ export default function Landing() {
   return (
     <>
       <motion.div
-        className="w-full relative bg-[url('./assets/bg.svg')] bg-cover bg-center bg-no-repeat text-white"
+        className="w-full relative bg-[url('./assets/bg.webp')] bg-cover bg-center bg-no-repeat text-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
