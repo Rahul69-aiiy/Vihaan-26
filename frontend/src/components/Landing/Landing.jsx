@@ -76,7 +76,7 @@ export default function Landing() {
         transition={{ duration: 1 }}
       >
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/29 pointer-events-none" />
 
         <div className="relative z-10 min-h-screen flex flex-col">
           {/* NAVBAR */}
@@ -271,12 +271,12 @@ export default function Landing() {
             </h1>
 
             <p className="paragraph text-[clamp(18px,3vw,26px)] mb-12">
-              COMING SOON…
+              April 10th & 11th
             </p>
 
             <div className="mb-4 text-lg reg tracking-wide">REGISTER AT</div>
 
-            <Button text="Register" setShowRegisterModal={setShowRegisterModal} />
+            <Button text="Devfolio" setShowRegisterModal={setShowRegisterModal} />
           </motion.div>
 
           <hr
