@@ -43,7 +43,6 @@ function App() {
   
   useEffect(() => {
     //if subscribe gate is skipped (because permission/cookie exists), start intro automatically
-    //NOTE: NO USER INTERACTION SO BROWSER BLOCKS AUTOPLAY WITH SOUND ON RELOAD/NEXT VISITS
     if (!showGate && !showIntro) {
       introAudioRef.current.currentTime = 0;
       introAudioRef.current.volume = 0.5;

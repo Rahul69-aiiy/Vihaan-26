@@ -27,20 +27,23 @@ export default function SubscribeGate({ onContinue }) {
       onContinue();
       return;
     }
+    setLoading(true);
 
     try {
-      setLoading(true);
-
       // 1. Request permission
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
-        alert("You denied permission for notifications.");
-        onContinue();
+        // If they denied, we still want to let them in!
+        onContinue(); 
         return;
       }
 
-      // 2. Wait for service worker
-      const registration = await navigator.serviceWorker.ready;
+      // 2. Wait for service worker (with a timeout safety)
+      // If the SW isn't ready in 3 seconds, just move on
+      const registration = await Promise.race([
+        navigator.serviceWorker.ready,
+        new Promise((_, reject) => setTimeout(() => reject(new Error("SW Timeout")), 3000))
+      ]);
 
       // 3. Subscribe
       const subscription = await registration.pushManager.subscribe({
@@ -48,26 +51,18 @@ export default function SubscribeGate({ onContinue }) {
         applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY),
       });
 
-      // 4. Save subscription to backend
-      const res = await fetch(`${BACKEND_URL}/subs/subscribe`, {
+      // 4. Save to backend
+      await fetch(`${BACKEND_URL}/subs/subscribe`, {
         method: "POST",
         body: JSON.stringify(subscription),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
 
-      if (res.status === 400) {
-        console.log("already subbed");
-        alert("You are already subscribed!");
-      } else if (res.status === 201) {
-        alert("You are now subscribed to event reminders!");
-      }
     } catch (error) {
-      console.error("Error during subscription:", error);
+      console.error("Subscription flow error:", error);
     } finally {
       setLoading(false);
-      onContinue(); // 🚀 always continue to intro
+      onContinue(); 
     }
   };
 
