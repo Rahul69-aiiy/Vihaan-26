@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
+import Sponsor from "./components/Sponsors/Sponsor.jsx";
 import SubscribeGate from "./utils/SubscribeGate.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Intro from "./components/Loader.jsx";
@@ -93,8 +93,8 @@ function App() {
         onClick={() => setMuted((m) => !m)}
         aria-label={muted ? "Unmute background audio" : "Mute background audio"}
         className="
-          fixed md:left-4
-          top-6 left-[calc(50%-18px)]
+          fixed 
+          top-6 left-[calc(35%-9px)]
           z-[9999]
           flex items-center justify-center
           w-9 h-9 rounded-full
@@ -157,6 +157,10 @@ function App() {
 
           <div id="gallery">
             <Gallery />
+          </div>
+
+          <div id="sponsors">
+            <Sponsor></Sponsor>
           </div>
 
           <div id="faqs">

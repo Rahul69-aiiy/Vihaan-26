@@ -47,49 +47,49 @@ function SvgCard({ src, name }) {
 const initialItems = [
   {
     id: "1",
-    widgets: <SvgCard src="/Gallerysvgs/c1-1.png" name="img1" />,
+    widgets: <SvgCard src="/Gallerysvgs/c1-1.webp" name="img1" />,
     className: "col-span-3",
   },
   {
     id: "2",
-    widgets: <SvgCard src="/Gallerysvgs/c2-1.png" name="img3" />,
+    widgets: <SvgCard src="/Gallerysvgs/c2-1.webp" name="img3" />,
     className: "col-span-4",
   },
   {
     id: "3",
-    widgets: <SvgCard src="/Gallerysvgs/c3-1.png" name="img4" />,
+    widgets: <SvgCard src="/Gallerysvgs/c3-1.webp" name="img4" />,
     className: "col-span-5",
   },
 
   {
     id: "4",
-    widgets: <SvgCard src="/Gallerysvgs/c4-1.png" name="img5" />,
+    widgets: <SvgCard src="/Gallerysvgs/c4-1.webp" name="img5" />,
     className: "col-span-5",
   },
   {
     id: "5",
-    widgets: <SvgCard src="/Gallerysvgs/c5-1.png" name="img6" />,
+    widgets: <SvgCard src="/Gallerysvgs/c5-1.webp" name="img6" />,
     className: "col-span-4",
   },
   {
     id: "6",
-    widgets: <SvgCard src="/Gallerysvgs/c6-1.png" name="img7" />,
+    widgets: <SvgCard src="/Gallerysvgs/c6-1.webp" name="img7" />,
     className: "col-span-3",
   },
 
   {
     id: "7",
-    widgets: <SvgCard src="/Gallerysvgs/c7-1.png" name="img8" />,
+    widgets: <SvgCard src="/Gallerysvgs/c7-1.webp" name="img8" />,
     className: "col-span-4",
   },
   {
     id: "8",
-    widgets: <SvgCard src="/Gallerysvgs/c8-1.png" name="img9" />,
+    widgets: <SvgCard src="/Gallerysvgs/c8-1.webp" name="img9" />,
     className: "col-span-3",
   },
   {
     id: "9",
-    widgets: <SvgCard src="/Gallerysvgs/c13-1.png" name="img11" />,
+    widgets: <SvgCard src="/Gallerysvgs/c13-1.webp" name="img11" />,
     className: "col-span-5",
   },
 ];
@@ -154,6 +154,12 @@ function DefaultSwapy() {
           })}
         </div>
       </SwapyLayout>
+      <hr
+            className="
+              glow-hr
+              border-0 h-2 w-full
+              bg-linear-to-r from-transparent via-[#ffc800] to-transparent
+            "/>
     </div>
   );
 }

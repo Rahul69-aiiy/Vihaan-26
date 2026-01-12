@@ -1,7 +1,12 @@
-import { precacheAndRoute } from 'workbox-precaching'
+import { precacheAndRoute  } from 'workbox-precaching'
+import { clientsClaim } from 'workbox-core'
 
 // ✅ Handle precaching by Workbox
 precacheAndRoute(self.__WB_MANIFEST)
+
+self.skipWaiting()
+clientsClaim()
+
 
 // ✅ Push event listener
 self.addEventListener('push', event => {
@@ -35,7 +40,7 @@ self.addEventListener('push', event => {
   const options = {
     body: data.message || 'New update available!',
     icon: data.icon || '/pwa-512x512.png',
-    badge: '/logoIcon.svg',
+    badge: '/logo.svg',
     data: {
       url: data.url || 'https://vihaan.ieeedtu.in/' // ✅ updated default URL
     }
@@ -45,6 +50,7 @@ self.addEventListener('push', event => {
     self.registration.showNotification(title, options)
   );
 });
+
 
 // ✅ Handle notification click
 self.addEventListener('notificationclick', event => {
