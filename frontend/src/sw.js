@@ -40,7 +40,7 @@ self.addEventListener('push', event => {
   const options = {
     body: data.message || 'New update available!',
     icon: data.icon || '/pwa-512x512.png',
-    badge: '/pwa-512x512.png',
+    badge: '/logo.svg',
     data: {
       url: data.url || 'https://vihaan.ieeedtu.in/' // ✅ updated default URL
     }
