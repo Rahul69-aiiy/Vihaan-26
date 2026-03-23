@@ -251,7 +251,7 @@ export default function Landing() {
 
             <div className="mb-4 text-lg reg tracking-wide">REGISTER AT</div>
 
-            <Button text="Unstop" link="https://unstop.com/hackathons/vihaan-90-dtu-new-delhi-1662559" />
+            <Button text="Unstop" link="https://unstop.com/college-fests/vihaan-90-ieee-dtu-delhi-technological-university-dtu-new-delhi-453051" />
           </motion.div>
 
           <hr
