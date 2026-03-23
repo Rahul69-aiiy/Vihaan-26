@@ -127,9 +127,9 @@ function App() {
             <Gallery />
           </div>
 
-          <div id="sponsors">
+          {/* <div id="sponsors">
             <Sponsor></Sponsor>
-          </div>
+          </div> */}
 
           <div id="faqs">
             <Faqs />
