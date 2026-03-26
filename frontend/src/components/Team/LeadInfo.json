@@ -1,0 +1,11 @@
+{   
+    "items": [
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/ccc.webp", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#5F005F", "cardBG": "#6060FF", "decorative": "/Team/decoratives/transformer.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+        { "name": "PERSON", "designation": "POSITION", "avatar": "/", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" }
+    ]
+}
