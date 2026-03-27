@@ -52,25 +52,25 @@ const CarouselCard = ({ index, personInfo, offset, isFlipped }) => {
             backfaceVisibility: "hidden",
           }}>
 
-            <div className="absolute inset-0" style={{
+            {/* <div className="absolute inset-0" style={{
                     backgroundImage: "url(/Team/ellipse.svg)",
                     zIndex: '0',
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                     backgroundSize: "contain",
                     transform: index % 2 !== 0 ? "scaleX(1)" : "scaleX(-1)"
-                }}/>
+                }}/> */}
 
-          <div className="w-35 h-22 rounded-xl border-5 border-white flex items-center justify-center overflow-hidden">
+          <div className="w-35 h-30 rounded-xl border-5 border-white flex items-center justify-center overflow-hidden">
                 
                 <div className='w-full h-full' style={{
                 backgroundImage: `url(${personInfo.avatar})`,
                 backgroundPosition: "center",
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 zIndex: 10
                 }}></div>
-            </div>
+          </div>
 
           <div className="text-center [font-family: sans-serif] font-[800] mt-3" style={{ zIndex: 10 }}>
             <span className='heading' 
