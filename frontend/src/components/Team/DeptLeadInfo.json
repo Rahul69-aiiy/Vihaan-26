@@ -1,0 +1,28 @@
+{
+  "items": [
+    { "name": "Abhinay Sahai", "designation": "Public Relations", "avatar": "/Team/DeptLeads/AbhinaySahai.jpg", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+    { "name": "Mridul Mor", "designation": "Public Relations", "avatar": "/Team/DeptLeads/MridulMor.jpeg", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+    { "name": "Abhijeet", "designation": "Public Relations", "avatar": "/Team/DeptLeads/Abhijeet.jpeg", "avatarBorder": "#5F005F", "cardBG": "#6060FF", "decorative": "/Team/decoratives/transformer.svg" },
+
+    { "name": "Bhavit Jain", "designation": "Corporate", "avatar": "/Team/DeptLeads/BhavitJain.jpeg", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" },
+    { "name": "Sneha Meerwal", "designation": "Corporate", "avatar": "/Team/DeptLeads/SnehaMeerwal.jpg", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+    { "name": "Bhavya Agarwal", "designation": "Corporate", "avatar": "/Team/DeptLeads/BhavyaAgarwal.jpg", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+
+    { "name": "Jitendra K. Singh", "designation": "Creatives, Content & Social Media", "avatar": "/Team/DeptLeads/JitendraKumarSingh.jpeg", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" },
+    { "name": "Shraddha Singh", "designation": "Creatives, Content & Social Media", "avatar": "/Team/DeptLeads/ShraddhaSingh.jpg", "avatarBorder": "#5F005F", "cardBG": "#6060FF", "decorative": "/Team/decoratives/transformer.svg" },
+    { "name": "Shashwat Jha", "designation": "Creatives, Content & Social Media", "avatar": "/Team/DeptLeads/ShashwatJha.jpg", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+
+    { "name": "Hemant Singh", "designation": "Technical", "avatar": "/Team/DeptLeads/HemantSingh.jpeg", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+    { "name": "Harshit Shakya", "designation": "Technical", "avatar": "/Team/DeptLeads/HarshitShakya.jpeg", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" },
+    { "name": "Himanshu Yadav", "designation": "Technical", "avatar": "/Team/DeptLeads/HimanshuYadav.webp", "avatarBorder": "#5F005F", "cardBG": "#6060FF", "decorative": "/Team/decoratives/transformer.svg" },
+    { "name": "Vaibhav Gupta", "designation": "Technical", "avatar": "/Team/DeptLeads/VaibhavGupta.jpeg", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+
+    { "name": "Dhruv Chiripal", "designation": "External Affairs", "avatar": "/Team/DeptLeads/DhruvChiripal.jpg", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+    { "name": "Srijoni Das", "designation": "External Affairs", "avatar": "/Team/DeptLeads/SrijoniDas.jpeg", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" },
+    { "name": "Yuvraj Malik", "designation": "External Affairs", "avatar": "/Team/DeptLeads/YuvrajMalik.jpg", "avatarBorder": "#5F005F", "cardBG": "#6060FF", "decorative": "/Team/decoratives/transformer.svg" },
+
+    { "name": "Aditya Tiwari", "designation": "Operations & Logistics", "avatar": "/Team/DeptLeads/AdityaTiwari.png", "avatarBorder": "#EB2929", "cardBG": "#BE0000", "decorative": "/Team/decoratives/spiderman.svg" },
+    { "name": "Shubham Gupta", "designation": "Operations & Logistics", "avatar": "/Team/DeptLeads/ShubhamGupta.jpeg", "avatarBorder": "#373773", "cardBG": "#2222FF", "decorative": "/Team/decoratives/batman.svg" },
+    { "name": "Shreyans Jain", "designation": "Operations & Logistics", "avatar": "/Team/DeptLeads/ShreyansJain.jpg", "avatarBorder": "#10C310", "cardBG": "#008000", "decorative": "/Team/decoratives/ironman.svg" }
+  ]
+}

@@ -38,6 +38,28 @@ html{
   display: inline-block;
 }
 
+.heading-invert {
+  font-family: "Bangers", cursive;
+  font-weight: 400;
+  font-size: 9vh;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+  transform: skewX(-4deg);
+
+  color: #f2f2f2; 
+
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+
+     7px 2px 0 #f4b400,
+     8px 6px 0 #000;
+}
+
 .paragraph {
   /* 1. Change Font: Use 'Bangers' or 'Impact' for that blocky comic look */
   font-family: "Bangers", "Impact", sans-serif;
