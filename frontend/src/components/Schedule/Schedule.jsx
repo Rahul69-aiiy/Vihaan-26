@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 export default function Schedule() {
   const nodes = [
-    { id: 1, date: "APRIL 11", text: "REGISTRATION BEGINS", x: 20, y: 42, position: 'top' },
-    { id: 2, date: "APRIL 11", text: "REGISTRATION ENDS",   x: 35, y: 63, position: 'bottom' },
-    { id: 3, date: "APRIL 11", text: "EVENT BROCHURE",      x: 50, y: 42, position: 'top' },
-    { id: 4, date: "APRIL 12", text: "VIHAAN STARTS",       x: 65, y: 63, position: 'bottom' },
+    { id: 1, date: "MARCH 20", text: "REGISTRATION BEGINS", x: 20, y: 42, position: 'top' },
+    { id: 2, date: "APRIL 5", text: "REGISTRATION ENDS",   x: 35, y: 63, position: 'bottom' },
+    { id: 3, date: "APRIL 7", text: "ONLINE QUIZ",      x: 50, y: 42, position: 'top' },
+    { id: 4, date: "APRIL 11", text: "VIHAAN STARTS",       x: 65, y: 63, position: 'bottom' },
     { id: 5, date: "APRIL 12", text: "VIHAAN ENDS",         x: 80, y: 42, position: 'top' },
   ];
 
@@ -83,11 +83,11 @@ export default function Schedule() {
   );
 
   return (
-    <div className="relative min-h-screen w-full bg-[#111111] overflow-hidden font-sans flex flex-col items-center justify-center">
+    <div className="relative min-h-screen w-full pt-24 bg-[#111111a4] overflow-hidden font-sans flex flex-col items-center justify-center">
 
       {/* Comic Texture Overlay */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none"
+        className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: "url('/bg-texture.png')",
           backgroundSize: 'cover',
@@ -101,7 +101,7 @@ export default function Schedule() {
         className="absolute -top-4 left-0 z-50 pointer-events-none"
         style={{ width: '180px', height: '360px', mixBlendMode: 'screen', opacity: 0.5 }}
       >
-        <img src="/spider-new.png" alt="Spider Logo" className="w-full h-full object-contain rotate-180" />
+        <img src="/spider-new.png" alt="Spider Logo" className="w-full opacity-75 h-full object-contain rotate-180" />
       </div>
 
       {/* ════════ TITLE — mobile only ════════ */}

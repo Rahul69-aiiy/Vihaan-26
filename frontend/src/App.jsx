@@ -122,12 +122,12 @@ function App() {
             <Landing2 />
           </div>
 
-          <div id="tracks">
-            <Tracks />
-          </div>
-
           <div id="schedule">
             <Schedule />
+          </div>
+          
+          <div id="tracks">
+            <Tracks />
           </div>
 
           <div id="gallery">

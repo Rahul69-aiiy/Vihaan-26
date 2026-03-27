@@ -52,7 +52,7 @@ export default function Landing() {
         {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/29 pointer-events-none" />
 
-        <div className="relative z-10 min-h-screen flex flex-col">
+        <div className="relative z-1000 min-h-screen flex flex-col">
           {/* NAVBAR */}
           <nav
             className={`fixed top-1 left-1/2 -translate-x-1/2 z-50
