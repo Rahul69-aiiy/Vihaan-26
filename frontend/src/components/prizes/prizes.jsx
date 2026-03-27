@@ -21,7 +21,7 @@ export default function Prizes() {
 
     return (
         // Shifted up to bottom-16 so the absolute coins have room to appear underneath
-        <div className={`fixed bottom-10 left-10 sm:bottom-9 sm:left-9 transition-opacity duration-1000 z-50 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`fixed bottom-10 left-10 sm:bottom-9 sm:left-9 transition-opacity duration-1000 z-5000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             
             {/* Main Container - Width locked here so it doesn't shift */}
             <div className="relative w-20 sm:w-28 flex flex-col items-center">
