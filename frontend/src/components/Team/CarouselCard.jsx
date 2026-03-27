@@ -86,7 +86,8 @@ const CarouselCard = ({ index, personInfo, offset, isFlipped }) => {
                 fontFamily: 'Bangers, cursive',
                 WebkitTextStroke: `0.5px black`,
                 WebkitTextFillColor: `white`,
-                zIndex: 10
+                zIndex: 10,
+                lineHeight: '1.2rem'
             }}>
               {personInfo.designation}
             </p>

@@ -1,6 +1,7 @@
 import TeamCarousel from "./TeamCarousel";
 import CouncilInfo from './CouncilInfo.json'    //helper for council details
 import LeadInfo from './LeadInfo.json'    //helper for event leads details
+import DeptLeadInfo from './DeptLeadInfo.json'    //helper for dept leads details
 
 export default function Team() {
   return (
@@ -10,12 +11,15 @@ export default function Team() {
           <div style={{ position: 'absolute', top: '0', right: '0', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: '0 -25vh', zIndex: '-10' }}></div>
           <div style={{ position: 'absolute', bottom: '0', left: '0', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', zIndex: '-10' }}></div>
           <div style={{ position: 'absolute', bottom: '0', right: '0', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', zIndex: '-10' }}></div>
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100vw', height: '80vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '100vw 80vh', backgroundPosition: 'center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '25%', left: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'left center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '25%', right: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'right center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '50%', left: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'left center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '50%', right: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'right center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '75%', left: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'left center', zIndex: '-10', pointerEvents: 'none' }}></div>
+          <div style={{ position: 'absolute', top: '75%', right: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'right center', zIndex: '-10', pointerEvents: 'none' }}></div>
           
           <div className="relative h-fit w-full flex justify-center">
-            <img
-              src="/Team/lightning.svg"
-              alt="lightning"
+            <img src="/Team/lightning.svg" alt="lightning"
               className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-1 pointer-events-none"
               style={{
                 fontSize: "clamp(48px, 10vw, 100px)",
@@ -25,26 +29,26 @@ export default function Team() {
               }}
             />
 
-            <h1
-              className="heading-invert flex relative z-1"
+            <h1 className="heading-invert flex relative z-1"
               style={{
                 fontSize: "clamp(52px, 11vw, 120px)",
                 width: "fit-content",
               }}
-            >
-              TEAM
-            </h1>
+            >TEAM</h1>
           </div>
+
           <div className="overflow-hidden">
               <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
-                COUNCIL
-              </h1>
+                MEET THE COUNCIL</h1>
               <TeamCarousel TeamInfo={CouncilInfo} />
 
               <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
-                EVENT LEADS
-              </h1>
+                EVENT LEADS</h1>
               <TeamCarousel TeamInfo={LeadInfo} />
+
+              <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
+                DEPARTMENT LEADS</h1>
+              <TeamCarousel TeamInfo={DeptLeadInfo} />
           </div>
 
         </section>
