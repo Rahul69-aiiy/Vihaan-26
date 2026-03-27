@@ -90,6 +90,16 @@ html{
   -webkit-text-stroke: 1px black;
 }
 
+.comic-text-shadow {
+  /* Yellow text base, black hard offset shadow */
+  color: #fef041; /* bright yellow from ref images */
+  text-shadow: 
+    3px 3px 0px #000, 
+    5px 5px 0px rgba(0,0,0,0.8);
+  /* Fallback for non-supporting browsers */
+  -webkit-text-stroke: 1px black; 
+}
+
 @keyframes glowFade {
   0%, 100% {
     box-shadow: 0 0 4px rgba(208,190,128,0.3);

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import Sponsor from "./components/Sponsors/Sponsor.jsx";
+// import Sponsor from "./components/Sponsors/Sponsor.jsx";
+import Prizes from "./components/prizes/prizes.jsx";
 import SubscribeGate from "./utils/SubscribeGate.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Intro from "./components/Loader.jsx";
@@ -147,6 +148,10 @@ function App() {
 
           <div id="footer">
             <Footer />
+          </div>
+
+          <div id="prizes">
+            <Prizes />
           </div>
         </>
       )}
