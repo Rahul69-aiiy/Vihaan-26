@@ -9,6 +9,7 @@ import Landing2 from "./components/Landing2.jsx";
 import Faqs from "./components/Faqs/faqs.jsx";
 import Team from "./components/Team/team.jsx";
 import Gallery from "./components/Gallery/Gallery.jsx";
+import Schedule from "./components/Schedule/Schedule.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 
 import { Volume2, VolumeX } from "lucide-react";
@@ -123,6 +124,10 @@ function App() {
 
           <div id="tracks">
             <Tracks />
+          </div>
+
+          <div id="schedule">
+            <Schedule />
           </div>
 
           <div id="gallery">

@@ -160,10 +160,7 @@ export default function Landing() {
 
                       <a
                         href="#schedule"
-                        onClick={(e) => {
-                          handleComingSoon(e);
-                          setOpen(false);
-                        }}
+                        onClick={() => setOpen(false)}
                         className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
                       >
                         SCHEDULE
