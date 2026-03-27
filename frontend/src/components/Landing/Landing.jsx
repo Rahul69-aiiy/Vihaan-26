@@ -3,6 +3,7 @@ import Button from "../../utils/button/button.jsx";
 import { motion } from "framer-motion";
 import "../../App.css";
 import { createPortal } from "react-dom";
+import Timer from "../Timer/Timer.jsx";
 
 export default function Landing() {
 
@@ -252,6 +253,11 @@ export default function Landing() {
             <div className="mb-4 text-lg reg tracking-wide">REGISTER AT</div>
 
             <Button text="Unstop" link="https://unstop.com/college-fests/vihaan-90-ieee-dtu-delhi-technological-university-dtu-new-delhi-453051" />
+
+            {/* ── Timer: compact, below the Unstop button ── */}
+            <div className="mt-8">
+              <Timer />
+            </div>
           </motion.div>
 
           <hr
@@ -281,11 +287,7 @@ export default function Landing() {
         >
           🚧 Coming Soon
         </div>
-        
       )}
-
-     
-
     </>
   );
 }
