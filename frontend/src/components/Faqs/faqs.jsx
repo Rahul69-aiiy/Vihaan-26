@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import Accordion from './Accordion.jsx';
 import FAQHelper from './FAQHelper';
 
 export default function Faqs() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleToggle = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <>
       <section className="relative h-full overflow-hidden mt-5 w-full " style={{ paddingTop: '1.5rem', paddingBottom: '8rem', }}>
@@ -18,7 +25,7 @@ export default function Faqs() {
               fontSize: "clamp(48px, 8vw, 112px)",
               backgroundImage: "linear-gradient(#f9f9f9, #f9f9f9)",
               WebkitTextStroke: '2px black',
-              zIndex: '1',
+              zIndex: '10',
               lineHeight: 1.1,
               maxWidth: '100vw',
               overflow: 'visible',
@@ -43,24 +50,22 @@ export default function Faqs() {
                   pointerEvents: 'none',
                 }}
               ></span>
-
                 ASKED
               </span>
-
               &nbsp;QUESTIONS?!
             </h1>
           </div>
   
-          <div
-            style={{
-              
-              marginTop: '5rem',
-              height: 'auto'
-            }}>
-         
+          <div style={{ marginTop: '5rem' }}>
             <div className="faq-accordions" >
               { FAQHelper && FAQHelper.faqs.map((faq, index) => (
-                <Accordion key={index} QAPair={faq}/> ))}
+                <Accordion 
+                  key={index} 
+                  QAPair={faq}
+                  isOpen={openIndex === index}
+                  onToggle={() => handleToggle(index)}
+                /> 
+              ))}
             </div>
           </div>
         </div>

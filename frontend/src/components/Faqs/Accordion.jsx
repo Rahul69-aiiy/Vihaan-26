@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 
-const Accordion = ({QAPair}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Accordion = ({QAPair, isOpen, onToggle}) => {
   const contentRef = useRef(null);
   const [pressed, setPressed] = useState(false);
   const [showClickEffect, setShowClickEffect] = useState(false);
@@ -15,7 +14,7 @@ const Accordion = ({QAPair}) => {
       <div
       onClick={(e) => {
                   e.stopPropagation();
-                  setIsOpen(prev => !prev);
+                  onToggle();
                   setShowClickEffect(true);
                   clickTimeoutRef.current = setTimeout(() => {
                     setShowClickEffect(false);
@@ -70,7 +69,7 @@ const Accordion = ({QAPair}) => {
                 tabIndex={0}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setIsOpen(prev => !prev);
+                  onToggle();
                 }}
                 onMouseDown={(e) => { 
                   e.stopPropagation(); 
