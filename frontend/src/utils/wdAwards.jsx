@@ -16,7 +16,7 @@ const WebsiteMentionPopup = () => {
       {isVisible && (
         <motion.div
           // Positioned middle-left
-          className="absolute left-0 top-[20%] -translate-y-1/2 z-50 flex items-center overflow-visible"
+          className="absolute left-0 top-[20%] -translate-y-1/2 z-5000 flex items-center overflow-visible"
           
           // Framer Motion Animation
           initial={{ x: '-100%', opacity: 0 }} 
