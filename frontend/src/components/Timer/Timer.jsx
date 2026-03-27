@@ -123,7 +123,7 @@ export default function Timer() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
+    <div style={{ display: "flex", justifyContent: "center", marginTop: "40px", opacity: 0.95, height: "40px" }}>
       <link
         href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600&family=Oswald:wght@700&display=swap"
         rel="stylesheet"
@@ -133,7 +133,7 @@ export default function Timer() {
         style={{
           background: "linear-gradient(180deg, #3a3a2e 0%, #1c1c14 100%)",
           border: "3px solid #6b6b50",
-          borderRadius: "6px",
+          borderRadius: "9px",
           paddingBottom: sz.containerPadY,
           boxShadow: `
             inset 0 2px 4px rgba(255,255,255,0.08),
@@ -144,31 +144,31 @@ export default function Timer() {
         }}
       >
         {/* TOP BAR */}
-        <div
-          style={{
-            background:
-              "linear-gradient(180deg, #ffb300 0%, #c49000 60%, #6b4e00 100%)",
-            borderBottom: "3px solid #3a2a00",
-            padding: `${sz.containerPadY}px ${sz.containerPadX}px`,
-            textAlign: "center",
-            boxShadow: "inset 0 2px 2px rgba(255,255,255,0.3)",
-          }}
-        >
-          <span
+          <div
             style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: sz.titleFont,
-              fontWeight: "700",
-              letterSpacing: "2px",
-              color: "#2a1600",
-              textShadow: "0 2px 2px rgba(255,255,255,0.4)",
+              background:
+                "linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 60%, #000000 100%)",
+              borderBottom: "3px solid #2a2a2a",
+              padding: `${sz.containerPadY}px ${sz.containerPadX}px`,
+              textAlign: "center",
+              boxShadow: "inset 0 2px 2px rgba(255,255,255,0.1)",
             }}
           >
-            TIME LEFT
-          </span>
-        </div>
+            <span className="
+                  heading
+                  
+                  border-b-2
+                  border-dotted
+                  border-white/40
+                "
+                style={{ filter: "drop-shadow(1px 0 1px white)", fontSize: sz.tileH }}
+              
+            >
+              TIME LEFT
+            </span>
+          </div>
 
-        {/* TILES */}
+          {/* TILES */}
         <div
           style={{
             display: "flex",

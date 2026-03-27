@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "../../App.css";
 import { createPortal } from "react-dom";
 import Timer from "../Timer/Timer.jsx";
+import WD from "../../utils/wdAwards.jsx";
 
 export default function Landing() {
 
@@ -38,7 +39,7 @@ export default function Landing() {
     setTimeout(() => setShowComingSoon(false), 2500);
   };
 
-  const navItems = ["ABOUT", "SCHEDULE", "PRIZES", "TRACKS", "GALLERY", "SPONSORS", "FAQS"];
+  const navItems = ["ABOUT", "SCHEDULE", "TRACKS", "GALLERY", "TEAM", "SPONSORS", "FAQS"];
 
   return (
     <>
@@ -91,7 +92,7 @@ export default function Landing() {
                       key={item}
                       href={`#${item.toLowerCase()}`}
                       onClick={
-                        item === "SCHEDULE" || item === "PRIZES" || item === "SPONSORS"
+                         item === "SPONSORS"
                           ? handleComingSoon
                           : undefined
                       }
@@ -185,16 +186,6 @@ export default function Landing() {
                         TRACKS
                       </a>
 
-                      <a
-                        href="#prizes"
-                        onClick={(e) => {
-                          handleComingSoon(e);
-                          setOpen(false);
-                        }}
-                        className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
-                      >
-                        PRIZES
-                      </a>
                     </div>
 
                     {/* MORE */}
@@ -205,6 +196,17 @@ export default function Landing() {
                         className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
                       >
                         GALLERY
+                      </a>
+
+                      <a
+                        href="#team"
+                        onClick={(e) => {
+                          handleComingSoon(e);
+                          setOpen(false);
+                        }}
+                        className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
+                      >
+                        TEAM
                       </a>
 
                       <a
@@ -287,7 +289,10 @@ export default function Landing() {
         >
           🚧 Coming Soon
         </div>
+
       )}
+
+      <WD></WD>
     </>
   );
 }
