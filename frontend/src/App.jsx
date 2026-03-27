@@ -6,6 +6,7 @@ import Intro from "./components/Loader.jsx";
 import Tracks from "./components/Tracks/Tracks.jsx";
 import Landing2 from "./components/Landing2.jsx";
 import Faqs from "./components/Faqs/faqs.jsx";
+import Team from "./components/Team/team.jsx";
 import Gallery from "./components/Gallery/Gallery.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 
@@ -130,6 +131,10 @@ function App() {
           {/* <div id="sponsors">
             <Sponsor></Sponsor>
           </div> */}
+
+          <div id="team">
+            <Team />
+          </div>
 
           <div id="faqs">
             <Faqs />

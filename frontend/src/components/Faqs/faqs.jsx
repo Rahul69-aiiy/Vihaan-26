@@ -11,7 +11,7 @@ export default function Faqs() {
 
   return (
     <>
-      <section className="relative h-full overflow-hidden mt-5 w-full " style={{ paddingTop: '1.5rem', paddingBottom: '8rem', }}>
+      <section className="relative h-full overflow-hidden mt-1 w-full " style={{ paddingTop: '1.5rem', paddingBottom: '8rem', }}>
         <div style={{ position: 'absolute', top: '-10vh', left: '-20vw', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '75vw 75vh', backgroundPosition: '-10vw -25vh' }}></div>
         <div style={{ position: 'absolute', top: '-10vh', right: '-20vw', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: '0 -25vh' }}></div>
         <div style={{ position: 'absolute', bottom: '-10vh', left: '-20vw', width: '50vw', height: '50vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', }}></div>
