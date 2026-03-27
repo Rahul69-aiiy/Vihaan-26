@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 
 export default function Schedule() {
   const nodes = [
-    { id: 1, date: "APRIL 11", text: "REGISTRATION BEGINS", x: 20, y: 38, position: 'top' },
-    { id: 2, date: "APRIL 11", text: "REGISTRATION ENDS",   x: 35, y: 62, position: 'bottom' },
-    { id: 3, date: "APRIL 11", text: "EVENT BROCHURE",      x: 50, y: 38, position: 'top' },
-    { id: 4, date: "APRIL 12", text: "VIHAAN STARTS",       x: 65, y: 62, position: 'bottom' },
-    { id: 5, date: "APRIL 12", text: "VIHAAN ENDS",         x: 80, y: 38, position: 'top' },
+    { id: 1, date: "APRIL 11", text: "REGISTRATION BEGINS", x: 20, y: 42, position: 'top' },
+    { id: 2, date: "APRIL 11", text: "REGISTRATION ENDS",   x: 35, y: 63, position: 'bottom' },
+    { id: 3, date: "APRIL 11", text: "EVENT BROCHURE",      x: 50, y: 42, position: 'top' },
+    { id: 4, date: "APRIL 12", text: "VIHAAN STARTS",       x: 65, y: 63, position: 'bottom' },
+    { id: 5, date: "APRIL 12", text: "VIHAAN ENDS",         x: 80, y: 42, position: 'top' },
   ];
 
   /* ── Shared bat-node renderer ─────────────────────────────── */
@@ -104,14 +104,14 @@ export default function Schedule() {
         <img src="/spider-new.png" alt="Spider Logo" className="w-full h-full object-contain rotate-180" />
       </div>
 
-      {/* ════════ TITLE (shared) ════════ */}
-      <div className="relative w-full text-center z-20 pt-8 pb-4">
+      {/* ════════ TITLE — mobile only ════════ */}
+      <div className="md:hidden relative w-full text-center z-20 pt-8 pb-2">
         <motion.h1
           initial={{ scale: 0.85, opacity: 0, y: -30 }}
           whileInView={{ scale: 1, opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
-          className="text-6xl sm:text-8xl md:text-9xl text-white uppercase font-bangers"
+          className="text-6xl sm:text-8xl text-white uppercase font-bangers"
           style={{
             fontStyle: 'italic',
             letterSpacing: '0.05em',
@@ -169,7 +169,26 @@ export default function Schedule() {
       {/* ════════════════════════════════════════════════════════
           DESKTOP — original absolute-positioned layout (hidden on mobile)
       ════════════════════════════════════════════════════════ */}
-      <div className="hidden md:block relative w-full max-w-7xl flex-1 min-h-[800px]">
+      <div className="hidden md:flex relative w-full max-w-7xl flex-1 flex-col justify-center min-h-[800px]">
+
+        {/* Desktop title — absolute so it doesn't push nodes down */}
+        <div className="absolute top-4 w-full text-center z-20">
+          <motion.h1
+            initial={{ scale: 0.85, opacity: 0, y: -30 }}
+            whileInView={{ scale: 1, opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
+            className="text-9xl text-white uppercase font-bangers"
+            style={{
+              fontStyle: 'italic',
+              letterSpacing: '0.05em',
+              transform: 'skewX(-6deg)',
+              textShadow: ['3px 3px 0 #1a3fff', '6px 6px 0 #0028cc', '7px 7px 0 #000'].join(', '),
+            }}
+          >
+            EVENT SCHEDULE
+          </motion.h1>
+        </div>
 
         {/* SVG connection lines + spider icons */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
