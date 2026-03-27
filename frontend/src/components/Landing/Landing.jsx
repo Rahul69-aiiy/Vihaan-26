@@ -90,7 +90,7 @@ export default function Landing() {
                       key={item}
                       href={`#${item.toLowerCase()}`}
                       onClick={
-                        item === "SCHEDULE" || item === "PRIZES" || item === "SPONSORS"
+                        item === "PRIZES" || item === "SPONSORS"
                           ? handleComingSoon
                           : undefined
                       }
@@ -158,10 +158,7 @@ export default function Landing() {
 
                       <a
                         href="#schedule"
-                        onClick={(e) => {
-                          handleComingSoon(e);
-                          setOpen(false);
-                        }}
+                        onClick={() => setOpen(false)}
                         className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
                       >
                         SCHEDULE
