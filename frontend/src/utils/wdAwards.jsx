@@ -59,7 +59,7 @@ const WebsiteMentionPopup = () => {
             </button>
 
             {/* Content Container */}
-            <div className="relative z-10 flex items-center gap-3 sm:gap-4">
+            <div className="relative z-500 flex items-center gap-3 sm:gap-4">
               
               {/* Trophy Emoji - Scaled down for better proportion */}
               <motion.span 

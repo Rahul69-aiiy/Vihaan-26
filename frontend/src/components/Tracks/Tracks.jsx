@@ -144,7 +144,7 @@ const Tracks = () => {
                   </button>
                   
                   <div className="flex flex-col items-center text-center space-y-6">
-                    <h2 className="heading text-[#bba75d] text-4xl mb-2">
+                    <h2 className="heading mb-2" style={{ fontSize: "2.5rem" }}>
                       {trackDetails[activeTrack].title}
                     </h2>
                     <hr className="w-16 border-[#bba75d]/50" />
