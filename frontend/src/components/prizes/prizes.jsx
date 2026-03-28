@@ -56,7 +56,7 @@ export default function Prizes() {
 
                 {/* 2. FALLING MONEY: Made significantly larger */}
                 <img
-                    src="/prizes/money.svg"
+                    src="/prizes/money.png"
                     alt="prize money"
                     // Starts way higher (-top-64) and is much wider (w-32)
                     className={`absolute left-1/2 transform -translate-x-1/2 w-32 sm:w-40 -z-10 transition-all ${
@@ -70,7 +70,7 @@ export default function Prizes() {
 
                 {/* 3. KNAPSACK: Stays completely still */}
                 <img
-                    src="/prizes/knapsack.svg"
+                    src="/prizes/knapsack.png"
                     alt="knapsack"
                     onClick={handleReveal}
                     className={`w-full animate-pulse -rotate-2 relative z-20 transition-transform duration-300 ${animationStep === 0 ? 'hover:scale-105 cursor-pointer hover:-translate-y-1' : 'cursor-default'}`}
@@ -78,7 +78,7 @@ export default function Prizes() {
 
                 {/* 4. COINS: Absolutely positioned so they don't push the bag up */}
                 <img
-                    src="/prizes/coin.svg"
+                    src="/prizes/coin.png"
                     alt="coins"
                     className={`absolute left-1/2 transform -translate-x-1/2 w-42 sm:w-54 z-200 transition-all duration-700 ease-out pointer-events-none ${
                         // Slide out from behind the bag to underneath it (-bottom-14)
