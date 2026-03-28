@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import Timer from "../Timer/Timer.jsx";
 import WD from "../../utils/wdAwards.jsx";
 
-export default function Landing() {
+export default function Landing({ showPrizes, setShowPrizes, glowTrigger, setGlowTrigger }) {
 
   const [mobile, setMobile] = useState(window.innerWidth < 900);
   const [open, setOpen] = useState(false);
@@ -39,7 +39,13 @@ export default function Landing() {
     setTimeout(() => setShowComingSoon(false), 2500);
   };
 
-  const navItems = ["ABOUT", "SCHEDULE", "TRACKS", "GALLERY", "TEAM", "SPONSORS", "FAQS"];
+  const handlePrizesClick = (e) => {
+    e.preventDefault();
+    setShowPrizes(true);
+    setGlowTrigger(prev => prev + 1); // Trigger glow
+  };
+
+  const navItems = ["ABOUT", "SCHEDULE", "TRACKS", "GALLERY", "PRIZES", "TEAM", "SPONSORS", "FAQS"];
 
   return (
     <>
@@ -87,6 +93,14 @@ export default function Landing() {
                     >
                       {item}
                     </a>
+                  ) : item === "PRIZES" ? (
+                    <button
+                      key={item}
+                      onClick={handlePrizesClick}
+                      className="font-[Julee] text-lg cursor-pointer hover:text-[#9CA802] transition"
+                    >
+                      {item}
+                    </button>
                   ) : (
                     <a
                       key={item}
@@ -194,6 +208,16 @@ export default function Landing() {
                       >
                         GALLERY
                       </a>
+
+                      <button
+                        onClick={(e) => {
+                          handlePrizesClick(e);
+                          setOpen(false);
+                        }}
+                        className="font-[Julee] text-2xl hover:text-[#9CA802] transition"
+                      >
+                        PRIZES
+                      </button>
 
                       <a
                         href="#team"

@@ -1,15 +1,22 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
     <footer className="w-full bg-[#0E0E0E] text-white font-bangers">
-      <div className="
-        max-w-7xl mx-auto
-        px-2 py-10
-        flex flex-row flex-wrap
-        justify-center md:justify-between
-        gap-x-22 gap-y-10
-      ">
+      <motion.div 
+        className="
+          max-w-7xl mx-auto
+          px-2 py-10
+          flex flex-row flex-wrap
+          justify-center md:justify-between
+          gap-x-22 gap-y-10
+        "
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         {/* LOGO */}
         <div className="flex flex-col items-center">
           <img
@@ -188,16 +195,20 @@ export default function Footer() {
             </svg>
           </button>
         </div>
-      </div>
+      </motion.div>
 
       <hr className="border-gray-700" />
 
-      <div
+      <motion.div
         className="text-center py-3 text-[#d4d700] text-lg tracking-wider"
         style={{ fontFamily: "Bangers, system-ui" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
       >
         MADE WITH CARE BY IEEE DTU
-      </div>
+      </motion.div>
     </footer>
   );
 }

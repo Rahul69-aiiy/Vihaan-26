@@ -1,13 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export default function Prizes() {
+export default function Prizes({ showPrizes = true, onHide = () => {}, glowTrigger = 0 }) {
     const [animationStep, setAnimationStep] = useState(0); 
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(showPrizes);
+    const [shouldGlow, setShouldGlow] = useState(false);
+    const prevGlowTriggerRef = useRef(glowTrigger);
 
+    // Handle initial visibility on first load
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(true), 2000);
         return () => clearTimeout(timer);
     }, []);
+
+    // Handle show/hide based on showPrizes prop
+    useEffect(() => {
+        if (showPrizes && !isVisible) {
+            setIsVisible(true);
+            setAnimationStep(0);
+        }
+    }, [showPrizes, isVisible]);
+
+    // Handle glow trigger when PRIZES is clicked while already visible
+    useEffect(() => {
+        if (glowTrigger !== prevGlowTriggerRef.current && isVisible) {
+            setShouldGlow(true);
+            const glowTimer = setTimeout(() => setShouldGlow(false), 500);
+            prevGlowTriggerRef.current = glowTrigger;
+            return () => clearTimeout(glowTimer);
+        }
+        prevGlowTriggerRef.current = glowTrigger;
+    }, [glowTrigger, isVisible]);
+
+    // Handle auto-hide after animation completes
+    useEffect(() => {
+        if (animationStep === 2) {
+            const hideTimer = setTimeout(() => {
+                setIsVisible(false);
+                setAnimationStep(0); // Reset for next trigger
+                onHide();
+            }, 5000); // 5 seconds after animation completes
+            
+            return () => clearTimeout(hideTimer);
+        }
+    }, [animationStep, onHide]);
 
     const handleReveal = () => {
         if (animationStep !== 0) return; 
@@ -21,7 +56,11 @@ export default function Prizes() {
 
     return (
         // Shifted up to bottom-16 so the absolute coins have room to appear underneath
-        <div className={`fixed bottom-10 left-10 sm:bottom-9 sm:left-9 transition-opacity duration-1000 z-5000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`fixed bottom-10 left-10 sm:bottom-9 sm:left-9 transition-all duration-1000 z-5000 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'} ${shouldGlow ? 'animate-pulse' : ''}`}
+          style={shouldGlow ? {
+            filter: 'drop-shadow(0 0 20px rgba(252, 211, 77, 0.8)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.6))',
+          } : {}}
+        >
             
             {/* Main Container - Width locked here so it doesn't shift */}
             <div className="relative w-20 sm:w-28 flex flex-col items-center">

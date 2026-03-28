@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 // import Sponsor from "./components/Sponsors/Sponsor.jsx";
+import Lenis from "lenis";
 import Prizes from "./components/prizes/prizes.jsx";
 import SubscribeGate from "./utils/SubscribeGate.jsx";
 import Landing from "./components/Landing/Landing.jsx";
@@ -18,6 +19,8 @@ import "./App.css";
 function App() {
   const [showGate, setShowGate] = useState(true);
   const [showIntro, setShowIntro] = useState(false);
+  const [showPrizes, setShowPrizes] = useState(true);
+  const [glowTrigger, setGlowTrigger] = useState(0);
 
   const [muted, setMuted] = useState(
     () => localStorage.getItem("bg-muted") === "true"
@@ -57,6 +60,30 @@ function App() {
     localStorage.setItem("bg-muted", muted);
     bgAudioRef.current.volume = muted ? 0 : 0.25;
   }, [muted]);
+
+  /* Initialize Lenis for smooth scrolling */
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smooth: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <>
@@ -115,7 +142,7 @@ function App() {
       {!showGate && !showIntro && (
         <>
           <div id="landing">
-            <Landing />
+            <Landing showPrizes={showPrizes} setShowPrizes={setShowPrizes} glowTrigger={glowTrigger} setGlowTrigger={setGlowTrigger} />
           </div>
 
           <div id="about">
@@ -151,7 +178,7 @@ function App() {
           </div>
 
           <div id="prizes">
-            <Prizes />
+            <Prizes showPrizes={showPrizes} onHide={() => setShowPrizes(false)} glowTrigger={glowTrigger} />
           </div>
         </>
       )}

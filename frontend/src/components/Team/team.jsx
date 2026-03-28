@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import TeamCarousel from "./TeamCarousel";
 import CouncilInfo from './CouncilInfo.json'    //helper for council details
 import LeadInfo from './LeadInfo.json'    //helper for event leads details
@@ -18,7 +19,13 @@ export default function Team() {
           <div style={{ position: 'absolute', top: '75%', left: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'left center', zIndex: '-10', pointerEvents: 'none' }}></div>
           <div style={{ position: 'absolute', top: '75%', right: '0', transform: 'translateY(-50%)', width: '50vw', height: '75vh', backgroundImage: 'url(/Faqs/SpotPattern.svg)', backgroundRepeat: 'no-repeat', backgroundSize: '50vw 75vh', backgroundPosition: 'right center', zIndex: '-10', pointerEvents: 'none' }}></div>
           
-          <div className="relative h-fit w-full flex justify-center">
+          <motion.div 
+            className="relative h-fit w-full flex justify-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <img src="/Team/lightning.svg" alt="lightning"
               className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-1 pointer-events-none"
               style={{
@@ -35,20 +42,65 @@ export default function Team() {
                 width: "fit-content",
               }}
             >TEAM</h1>
-          </div>
+          </motion.div>
 
           <div className="overflow-hidden">
-              <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
-                MEET THE COUNCIL</h1>
-              <TeamCarousel TeamInfo={CouncilInfo} />
+              <motion.h1 
+                className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" 
+                style={{ fontSize: "clamp(48px, 10vw, 100px)" }}
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                MEET THE COUNCIL
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                <TeamCarousel TeamInfo={CouncilInfo} />
+              </motion.div>
 
-              <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
-                EVENT LEADS</h1>
-              <TeamCarousel TeamInfo={LeadInfo} />
+              <motion.h1 
+                className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" 
+                style={{ fontSize: "clamp(48px, 10vw, 100px)" }}
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                EVENT LEADS
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                <TeamCarousel TeamInfo={LeadInfo} />
+              </motion.div>
 
-              <h1 className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" style={{ fontSize: "clamp(48px, 10vw, 100px)" }}>
-                DEPARTMENT LEADS</h1>
-              <TeamCarousel TeamInfo={DeptLeadInfo} />
+              <motion.h1 
+                className="relative z-5 mb-5 heading text-white w-full mt-20 mx-auto text-center" 
+                style={{ fontSize: "clamp(48px, 10vw, 100px)" }}
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                DEPARTMENT LEADS
+              </motion.h1>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                <TeamCarousel TeamInfo={DeptLeadInfo} />
+              </motion.div>
           </div>
 
         </section>
