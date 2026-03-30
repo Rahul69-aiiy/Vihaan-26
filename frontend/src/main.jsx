@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// Service worker registration is handled automatically by VitePWA with registerType: 'autoUpdate'
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    window.location.reload()
-  })
+  window.addEventListener('load', () => {
+    // console.log('✅ Service Worker support detected - VitePWA will handle registration');
+  });
 }
 
 createRoot(document.getElementById('root')).render(

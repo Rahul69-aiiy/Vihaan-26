@@ -22,7 +22,7 @@ export default function Schedule() {
     >
       {node.position === 'top' && (
         <h2
-          className="text-white font-bangers tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
+          className="text-white font-kalam tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
           style={{
             fontSize: '3rem',
             fontStyle: 'italic',
@@ -52,9 +52,9 @@ export default function Schedule() {
           />
         </div>
         <span
-          className="relative z-10 text-white font-kalam uppercase text-center px-4 w-[85%] leading-[1.1]"
+          className="relative z-10 text-white font-bangers uppercase text-center px-4 w-[85%] leading-[1.1]"
           style={{
-            fontSize: '0.8rem',
+            fontSize: '1.2rem',
             fontStyle: 'italic',
             textShadow: '1px 1px 3px #000, 0 0 8px #000',
             letterSpacing: '0.1em',
@@ -67,7 +67,7 @@ export default function Schedule() {
 
       {node.position === 'bottom' && (
         <h2
-          className="text-white font-bangers tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
+          className="text-white font-kalam tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
           style={{
             fontSize: '3rem',
             fontStyle: 'italic',
@@ -251,7 +251,7 @@ export default function Schedule() {
           >
             {node.position === 'top' && (
               <h2
-                className="text-white font-bangers tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
+                className="text-white font-kalam tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem', fontStyle: 'italic', fontWeight: 900,
                   textShadow: '2px 2px 0 #000, -1px -1px 0 #000',
@@ -278,9 +278,9 @@ export default function Schedule() {
                 />
               </div>
               <span
-                className="relative z-10 text-white font-kalam uppercase text-center px-4 w-[85%] leading-[1.1]"
+                className="relative z-10 text-white font-bangers uppercase text-center px-4 w-[85%] leading-[1.1]"
                 style={{
-                  fontSize: '0.8rem', fontStyle: 'italic',
+                  fontSize: '1.2rem', fontStyle: 'italic',
                   textShadow: '1px 1px 3px #000, 0 0 8px #000',
                   letterSpacing: '0.1em', marginTop: '-5%',
                 }}
@@ -291,7 +291,7 @@ export default function Schedule() {
 
             {node.position === 'bottom' && (
               <h2
-                className="text-white font-bangers tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
+                className="text-white font-kalam tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem', fontStyle: 'italic', fontWeight: 900,
                   textShadow: '2px 2px 0 #000, -1px -1px 0 #000',

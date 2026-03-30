@@ -16,7 +16,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import { Volume2, VolumeX } from "lucide-react";
 import "./App.css";
 
-const setNotifCookie = (name, value, days=365) => {
+const setNotifCookie = (name, value, days=5) => {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
   document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
 };
@@ -26,35 +26,20 @@ const getNotifCookie = (name) => {
 };
 
 function App() {
+  const subscriptionStatus = getNotifCookie("push_subscription_status");
+  
+  const [showGate, setShowGate] = useState(!subscriptionStatus); // Show gate only if no cookie
+  const [showIntro, setShowIntro] = useState(!!subscriptionStatus); // Show intro only if cookie exists
+  const [autoStartIntro, setAutoStartIntro] = useState(false); // Only auto-start after gate response
+  const [showPrizes, setShowPrizes] = useState(true);
+  const [glowTrigger, setGlowTrigger] = useState(0);
 
-  
-  const [showGate, setShowGate] = useState(() => {
-    const permission = Notification.permission;
-    const interacted = getNotifCookie("push_interacted") === "true";
-    
-    //show gate if permission is default (meaning it is not "granted" or "denied") and user has not interacted yet
-    return permission === "default" && !interacted;
-  });
-  
-  const [showIntro, setShowIntro] = useState(false);
-  
   const [muted, setMuted] = useState(
     () => localStorage.getItem("bg-muted") === "true"
   );
-  
+
   const introAudioRef = useRef(new Audio("/audio/intro.mp3"));
   const bgAudioRef = useRef(new Audio("/audio/bg-audio.mp3"));
-  
-  useEffect(() => {
-    //if subscribe gate is skipped (because permission/cookie exists), start intro automatically
-    if (!showGate && !showIntro) {
-      introAudioRef.current.currentTime = 0;
-      introAudioRef.current.volume = 0.5;
-      introAudioRef.current.play().catch(err => {});
-
-      setShowIntro(true);
-    }
-  }, []);
 
   /* Cleanup intro audio */
   useEffect(() => {
@@ -139,7 +124,7 @@ function App() {
       {showGate && (
         <SubscribeGate
           onContinue={() => {
-            setNotifCookie("push_interacted", "true");
+            setNotifCookie("push_subscription_status", "true");
 
             introAudioRef.current.currentTime = 0;
             introAudioRef.current.volume = 0.5;
@@ -147,6 +132,7 @@ function App() {
 
             setShowGate(false);
             setShowIntro(true);
+            setAutoStartIntro(true); // Auto-start intro animation without START button
           }}
         />
       )}
@@ -156,6 +142,7 @@ function App() {
         <div id="loader">
           <Intro
             audioRef={introAudioRef}
+            autoStart={autoStartIntro}
             onComplete={() => {
               introAudioRef.current.pause();
               introAudioRef.current.currentTime = 0;

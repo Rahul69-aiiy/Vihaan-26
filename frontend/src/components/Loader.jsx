@@ -23,7 +23,7 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*{}/<>";
 
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-function Intro({ onComplete, audioRef }) {
+function Intro({ onComplete, audioRef, autoStart = false }) {
   const allImages = useMemo(() => [...actionPanels, finalImage], []);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -32,7 +32,7 @@ function Intro({ onComplete, audioRef }) {
   const [showDecryption, setShowDecryption] = useState(false);
   const [decryptedText, setDecryptedText] = useState("");
   const [isTextDone, setIsTextDone] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [hasStarted, setHasStarted] = useState(autoStart); // Auto-start if cookie exists
   const [showClickEffect, setShowClickEffect] = useState(false);
 
   const hasCompletedRef = useRef(false);
@@ -53,6 +53,17 @@ function Intro({ onComplete, audioRef }) {
       imgObj.onerror = checkLoad;
     });
   }, [allImages]);
+
+  /* Auto-trigger start if autoStart is true */
+  useEffect(() => {
+    if (autoStart && imagesLoaded) {
+      setCurrentImageIndex(0);
+      setIsFinalState(false);
+      setShowDecryption(false);
+      setDecryptedText("");
+      setIsTextDone(false);
+    }
+  }, [autoStart, imagesLoaded]);
   /* IMAGE FLIPPING */
   useEffect(() => {
     if (!imagesLoaded || !hasStarted) return;
@@ -241,31 +252,33 @@ function Intro({ onComplete, audioRef }) {
       {/* start btn overlay */}
       {!hasStarted && (
         <div className="absolute bg-black inset-0 z-[10] bg-black flex items-center justify-center">
-          <div className={styles.centre} style={{transform: 'scale(1.4)', position: 'relative'}}>
-            <button 
-              type="button" 
-              className={styles.commonbutton} 
-              style={{ cursor: 'pointer', position: 'relative', overflow: 'visible' }} 
-              onClick={handleStart}
-            >
-              {showClickEffect && (
-                <img
-                  src={clickEffect}
-                  alt=""
-                  style={{
-                    position: 'absolute',
-                    marginTop: '-1.5rem',    
-                    transform: 'scale(0)',
-                    pointerEvents: 'none',
-                    zIndex: 11,
-                    animation: 'comicClickPop 0.35s ease-out',
-                  }}
-                />
-              )}
-              <div className={styles.top} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)', color: 'black' }}>START</div>
-              <div className={styles.bottom} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)' }}></div>
-            </button>
-          </div>
+          {!autoStart && (
+            <div className={styles.centre} style={{transform: 'scale(1.4)', position: 'relative'}}>
+              <button 
+                type="button" 
+                className={styles.commonbutton} 
+                style={{ cursor: 'pointer', position: 'relative', overflow: 'visible' }} 
+                onClick={handleStart}
+              >
+                {showClickEffect && (
+                  <img
+                    src={clickEffect}
+                    alt=""
+                    style={{
+                      position: 'absolute',
+                      marginTop: '-1.5rem',    
+                      transform: 'scale(0)',
+                      pointerEvents: 'none',
+                      zIndex: 11,
+                      animation: 'comicClickPop 0.35s ease-out',
+                    }}
+                  />
+                )}
+                <div className={styles.top} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)', color: 'black' }}>START</div>
+                <div className={styles.bottom} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)' }}></div>
+              </button>
+            </div>
+          )}
         </div>
       )}
 

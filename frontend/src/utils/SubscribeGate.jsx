@@ -34,6 +34,7 @@ export default function SubscribeGate({ onContinue }) {
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
         // If they denied, we still want to let them in!
+        alert("Notifications disabled. You can enable them later.");
         onContinue(); 
         return;
       }
@@ -58,8 +59,10 @@ export default function SubscribeGate({ onContinue }) {
         headers: { "Content-Type": "application/json" },
       });
 
+      alert("Successfully subscribed to notifications!");
     } catch (error) {
       console.error("Subscription flow error:", error);
+      alert("Subscription failed. You can try again later.");
     } finally {
       setLoading(false);
       onContinue(); 
@@ -99,7 +102,10 @@ export default function SubscribeGate({ onContinue }) {
           {/* SKIP */}
           <button
             className="text-gray-400 text-sm hover:text-white transition"
-            onClick={onContinue}
+            onClick={() => {
+              alert("You can subscribe anytime to get updates!");
+              onContinue();
+            }}
             disabled={loading}
           >
             Continue without subscribing

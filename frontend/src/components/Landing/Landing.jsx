@@ -5,6 +5,7 @@ import "../../App.css";
 import { createPortal } from "react-dom";
 import Timer from "../Timer/Timer.jsx";
 import WD from "../../utils/wdAwards.jsx";
+import PWAInstallPrompt from "../../utils/PWAInstallPrompt.jsx";
 
 export default function Landing({ showPrizes, setShowPrizes, glowTrigger, setGlowTrigger }) {
 
@@ -313,6 +314,7 @@ export default function Landing({ showPrizes, setShowPrizes, glowTrigger, setGlo
       )}
 
       <WD></WD>
+      <PWAInstallPrompt></PWAInstallPrompt>
     </>
   );
 }
