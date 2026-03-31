@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 
-const Accordion = ({QAPair, isOpen, onToggle}) => {
+const Accordion = ({QAPair, isOpen, onToggle, index = 0}) => {
   const contentRef = useRef(null);
   const [pressed, setPressed] = useState(false);
   const [showClickEffect, setShowClickEffect] = useState(false);
@@ -8,8 +9,11 @@ const Accordion = ({QAPair, isOpen, onToggle}) => {
 
   return (
     <>
-    <div
-    
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.3, delay: index * 0.08, ease: "easeOut" }}
       style={{ border: isOpen ? 'None' : '0.3em solid #f9f9f9', borderRadius: '0.5rem', width: '90%', margin: '10px auto' , zIndex: '10' }}>
       <div
       onClick={(e) => {
@@ -161,7 +165,7 @@ const Accordion = ({QAPair, isOpen, onToggle}) => {
             fontWeight: QAPair.textColor === "white" ? '500' : '700', 
             fontSize: '1.4rem' }}>{QAPair.answer}</div>
       </div>
-    </div>
+    </motion.div>
 
     {/* click effect animation */}
     <style>

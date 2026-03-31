@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import PWAInstallPrompt from "./PWAInstallPrompt.jsx";
 
-export default function SubscribeGate({ onContinue }) {
+export default function SubscribeGate({ setNotifCookie, onContinue }) {
   const PUBLIC_VAPID_KEY = import.meta.env.VITE_PUBLIC_VAPID_KEY;
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -60,11 +61,14 @@ export default function SubscribeGate({ onContinue }) {
       if (res.status === 400) {
         console.log("already subbed");
         alert("You are already subscribed!");
+        setNotifCookie("true");
       } else if (res.status === 201) {
         alert("You are now subscribed to event reminders!");
+        setNotifCookie("true");
       }
     } catch (error) {
       console.error("Error during subscription:", error);
+      alert("An error occurred while subscribing. Please try again.");
     } finally {
       setLoading(false);
       onContinue(); // 🚀 always continue to intro
@@ -104,13 +108,17 @@ export default function SubscribeGate({ onContinue }) {
           {/* SKIP */}
           <button
             className="text-gray-400 text-sm hover:text-white transition"
-            onClick={onContinue}
+            onClick={() => {
+              alert("You can subscribe later from the homepage!");
+              onContinue();
+            }}
             disabled={loading}
           >
             Continue without subscribing
           </button>
         </div>
       </motion.div>
+      <PWAInstallPrompt></PWAInstallPrompt>
     </motion.div>
   );
 }

@@ -25,7 +25,7 @@ const TeamCarousel = ({ TeamInfo }) => {
 
   return (
     <div className="relative overflow-hidden" style={{ width: '100%', maxWidth: '100vw' }}>
-      <div className="flex justify-center items-center h-[50vh]">
+      <div className="flex justify-center items-center h-[59vh]">
         <div className="relative h-full flex justify-center items-center overflow-hidden" style={{ width: '100%', maxWidth: '100vw' }}>
 
           {TeamInfo && TeamInfo.items.map((item, i) => {

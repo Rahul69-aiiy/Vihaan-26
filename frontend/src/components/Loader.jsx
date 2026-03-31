@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import styles from '../utils/button/button.module.css';
+import clickEffect from "/Faqs/ButtonClicks/ClickEffect.svg";
+import PWAInstallPrompt from "../utils/PWAInstallPrompt.jsx";
 
 // Images
 import img1 from "/Gallerysvgs/c1-1.webp";
@@ -19,9 +22,9 @@ const finalImage = img;
 const FINAL_TEXT = "VIHAAN 9.0";
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*{}/<>";
 
-const isMobile = window.innerWidth < 768;//for mobile
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-function Intro({ onComplete, audioRef }) {
+function Intro({ onComplete, audioRef, autoStart = false }) {
   const allImages = useMemo(() => [...actionPanels, finalImage], []);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -30,7 +33,11 @@ function Intro({ onComplete, audioRef }) {
   const [showDecryption, setShowDecryption] = useState(false);
   const [decryptedText, setDecryptedText] = useState("");
   const [isTextDone, setIsTextDone] = useState(false);
+  const [hasStarted, setHasStarted] = useState(autoStart); // Auto-start if cookie exists
+  const [showClickEffect, setShowClickEffect] = useState(false);
+
   const hasCompletedRef = useRef(false);
+  const clickTimeoutRef = useRef(null);
 
   /* PRELOAD IMAGES */
   useEffect(() => {
@@ -47,9 +54,20 @@ function Intro({ onComplete, audioRef }) {
       imgObj.onerror = checkLoad;
     });
   }, [allImages]);
+
+  /* Auto-trigger start if autoStart is true */
+  useEffect(() => {
+    if (autoStart && imagesLoaded) {
+      setCurrentImageIndex(0);
+      setIsFinalState(false);
+      setShowDecryption(false);
+      setDecryptedText("");
+      setIsTextDone(false);
+    }
+  }, [autoStart, imagesLoaded]);
   /* IMAGE FLIPPING */
   useEffect(() => {
-    if (!imagesLoaded) return;
+    if (!imagesLoaded || !hasStarted) return;
 
     const FLIP_INTERVAL = isMobile ? 220 : 150;
 
@@ -72,10 +90,10 @@ function Intro({ onComplete, audioRef }) {
       clearTimeout(textTimer);
       clearTimeout(finishTimer);
     };
-  }, [imagesLoaded, isFinalState]);
+  }, [imagesLoaded, isFinalState, hasStarted]);
 
   useEffect(() => {
-    if (!showDecryption) return;
+    if (!showDecryption || !hasStarted) return;
 
     let iterations = 0;
     const DECRYPT_INTERVAL = isMobile ? 60 : 50;
@@ -101,7 +119,7 @@ function Intro({ onComplete, audioRef }) {
     }, DECRYPT_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [showDecryption, onComplete]);
+  }, [showDecryption, hasStarted, onComplete]);
 
   if (!imagesLoaded) return null;
 
@@ -111,12 +129,31 @@ function Intro({ onComplete, audioRef }) {
     onComplete();
   };
 
+  const handleStart = () => {
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    setShowClickEffect(true);
+    
+    clickTimeoutRef.current = setTimeout(() => {
+      setShowClickEffect(false);
+      setHasStarted(true);
+    }, 350);
+
+    setCurrentImageIndex(0);
+    setIsFinalState(false);
+    setShowDecryption(false);
+    setDecryptedText("");
+    setIsTextDone(false);
+    hasCompletedRef.current = false;
+
+    audioRef?.current?.play?.();
+  };
+
   return (
-    <div className="fixed inset-0 w-screen h-screen overflow-hidden z-50 bg-black flex flex-col justify-center items-center">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center">
       {/* STRIP CONTAINER */}
       <motion.div
         initial={{ height: "40vh" }}
-        animate={{ height: "70vh" }}
+        animate={{ height: hasStarted ? "70vh" : "40vh" }}
         transition={{ duration: 7, ease: "easeInOut" }}
         className="relative w-full border-y-4 border-white shadow-[0_0_30px_rgba(255,255,255,0.1)] bg-gray-900 overflow-hidden"
       >
@@ -128,7 +165,7 @@ function Intro({ onComplete, audioRef }) {
               ? "brightness(1)"
               : showDecryption
               ? isMobile
-                ? "brightness(0.85) blur(8px)" // 📱 NO BLUR ON MOBILE
+                ? "brightness(0.85) blur(8px)" //NO BLUR ON MOBILE
                 : "blur(8px) brightness(0.6)"
               : "brightness(1)",
           }}
@@ -161,21 +198,23 @@ function Intro({ onComplete, audioRef }) {
       </motion.div>
 
       {/* SKIP */}
-      <motion.h1
-        onClick={safeComplete}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-        className="fixed top-6 right-6 z-100 text-white text-xl md:text-2xl hover:scale-110 transition-transform active:scale-95"
-        style={{
-          fontFamily: '"Bangers", system-ui',
-          WebkitTextStroke: "1px black",
-          letterSpacing: "0.1em",
-          cursor: "pointer",
-        }}
-      >
-        SKIP &gt;&gt;
-      </motion.h1>
+      {hasStarted && (
+        <motion.h1
+          onClick={safeComplete}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="fixed top-6 right-6 z-[101] text-white text-xl md:text-2xl hover:scale-110 transition-transform active:scale-95"
+          style={{
+            fontFamily: '"Bangers", system-ui',
+            WebkitTextStroke: "1px black",
+            letterSpacing: "0.1em",
+            cursor: "pointer",
+          }}
+        >
+          SKIP &gt;&gt;
+        </motion.h1>
+      )}
 
       {/* TEXT */}
       {showDecryption && (
@@ -210,6 +249,60 @@ function Intro({ onComplete, audioRef }) {
           </motion.div>
         </div>
       )}
+
+      {/* start btn overlay */}
+      {!hasStarted && (
+        <div className="absolute bg-black inset-0 z-[10] bg-black flex items-center justify-center">
+          {!autoStart && (
+            <>
+            <div className={styles.centre} style={{ transform: 'scale(1.4)', position: 'relative' }}>
+              <button
+                type="button"
+                className={styles.commonbutton}
+                style={{ cursor: 'pointer', position: 'relative', overflow: 'visible' }}
+                onClick={handleStart}
+              >
+                {showClickEffect && (
+                  <img
+                    src={clickEffect}
+                    alt=""
+                    style={{
+                      position: 'absolute',
+                      marginTop: '-1.5rem',
+                      transform: 'scale(0)',
+                      pointerEvents: 'none',
+                      zIndex: 11,
+                      animation: 'comicClickPop 0.35s ease-out',
+                    }} />
+                )}
+                <div className={styles.top} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)', color: 'black' }}>START</div>
+                <div className={styles.bottom} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)' }}></div>
+              </button>
+            </div>
+            <PWAInstallPrompt></PWAInstallPrompt>
+            </>
+          )}
+        </div>
+      )}
+
+      <style>
+        {`
+          @keyframes comicClickPop {
+            0% {
+              transform: scale(1.3);
+              opacity: 0;
+            }
+            50% {
+              transform: scale(2);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1.7);
+              opacity: 0;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }

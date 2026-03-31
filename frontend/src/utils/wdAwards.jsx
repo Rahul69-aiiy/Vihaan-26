@@ -3,12 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const WebsiteMentionPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 1500); 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -79,9 +88,9 @@ const WebsiteMentionPopup = () => {
                 <h2 
                   className="font-black italic text-[#fef041] leading-none uppercase tracking-wide"
                   style={{
-                    fontSize: "clamp(20px, 4vw, 28px)", // Perfectly fluid text size
-                    WebkitTextStroke: "1px black",
-                    textShadow: "2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.6)" // Inline shadow so you don't need external CSS
+                    fontSize: "clamp(20px, 4vw, 28px)",
+                    WebkitTextStroke: isMobile ? "none" : "1px black",
+                    textShadow: isMobile ? "none" : "2px 2px 0px #000, 4px 4px 0px rgba(0,0,0,0.6)"
                   }}
                 >
                   BEST WEBSITE
@@ -91,8 +100,8 @@ const WebsiteMentionPopup = () => {
                   className="font-extrabold italic text-white leading-tight uppercase tracking-wider mt-1"
                   style={{
                     fontSize: "clamp(14px, 2.5vw, 18px)",
-                    WebkitTextStroke: "1px black",
-                    textShadow: "2px 2px 0px #000"
+                    WebkitTextStroke: isMobile ? "none" : "1px black",
+                    textShadow: isMobile ? "none" : "2px 2px 0px #000"
                   }}
                 >
                   IN WD CATEGORY

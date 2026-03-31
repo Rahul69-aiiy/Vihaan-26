@@ -22,7 +22,7 @@ export default function Schedule() {
     >
       {node.position === 'top' && (
         <h2
-          className="text-white font-bangers tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
+          className="text-white font-kalam tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
           style={{
             fontSize: '3rem',
             fontStyle: 'italic',
@@ -39,7 +39,7 @@ export default function Schedule() {
       <div className="relative w-full flex items-center justify-center z-10" style={{ aspectRatio: '3 / 1' }}>
         <div className="absolute inset-0 w-full h-full">
           <img
-            src="/bat-logo.png"
+            src="/Schedule/bat-logo.png"
             alt="Bat Node"
             className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
             style={{
@@ -52,9 +52,9 @@ export default function Schedule() {
           />
         </div>
         <span
-          className="relative z-10 text-white font-kalam uppercase text-center px-4 w-[85%] leading-[1.1]"
+          className="relative z-10 text-white font-bangers uppercase text-center px-4 w-[85%] leading-[1.1]"
           style={{
-            fontSize: '0.8rem',
+            fontSize: '1.2rem',
             fontStyle: 'italic',
             textShadow: '1px 1px 3px #000, 0 0 8px #000',
             letterSpacing: '0.1em',
@@ -67,7 +67,7 @@ export default function Schedule() {
 
       {node.position === 'bottom' && (
         <h2
-          className="text-white font-bangers tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
+          className="text-white font-kalam tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
           style={{
             fontSize: '3rem',
             fontStyle: 'italic',
@@ -89,7 +89,7 @@ export default function Schedule() {
       <div
         className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none"
         style={{
-          backgroundImage: "url('/bg-texture.png')",
+          backgroundImage: "url('/Schedule/bg-texture.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -101,7 +101,7 @@ export default function Schedule() {
         className="absolute -top-4 left-0 z-50 pointer-events-none"
         style={{ width: '180px', height: '360px', mixBlendMode: 'screen', opacity: 0.5 }}
       >
-        <img src="/spider-new.png" alt="Spider Logo" className="w-full opacity-75 h-full object-contain rotate-180" />
+        <img src="/Schedule/spider-new.png" alt="Spider Logo" className="w-full opacity-75 h-full object-contain rotate-180" />
       </div>
 
       {/* ════════ TITLE — mobile only ════════ */}
@@ -143,7 +143,7 @@ export default function Schedule() {
                   className="w-[1px] h-10 border-l-2 border-dashed border-white/40"
                 />
                 <motion.img
-                  src="/spider-new-tilted.png"
+                  src="/Schedule/spider-new-tilted.png"
                   alt=""
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 0.7 }}
@@ -223,7 +223,7 @@ export default function Schedule() {
                     transition={{ delay: i * 0.3 + 1.2 }}
                   >
                     <image
-                      href="/spider-new-tilted.png"
+                      href="/Schedule/spider-new-tilted.png"
                       x={midX - 1.75}
                       y={midY - 1.75}
                       width="3.5"
@@ -251,7 +251,7 @@ export default function Schedule() {
           >
             {node.position === 'top' && (
               <h2
-                className="text-white font-bangers tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
+                className="text-white font-kalam tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem', fontStyle: 'italic', fontWeight: 900,
                   textShadow: '2px 2px 0 #000, -1px -1px 0 #000',
@@ -265,7 +265,7 @@ export default function Schedule() {
             <div className="relative w-full flex items-center justify-center z-10" style={{ aspectRatio: '3 / 1' }}>
               <div className="absolute inset-0 w-full h-full">
                 <img
-                  src="/bat-logo.png"
+                  src="/Schedule/bat-logo.png"
                   alt="Bat Node"
                   className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
                   style={{
@@ -278,9 +278,9 @@ export default function Schedule() {
                 />
               </div>
               <span
-                className="relative z-10 text-white font-kalam uppercase text-center px-4 w-[85%] leading-[1.1]"
+                className="relative z-10 text-white font-bangers uppercase text-center px-4 w-[85%] leading-[1.1]"
                 style={{
-                  fontSize: '0.8rem', fontStyle: 'italic',
+                  fontSize: '1.2rem', fontStyle: 'italic',
                   textShadow: '1px 1px 3px #000, 0 0 8px #000',
                   letterSpacing: '0.1em', marginTop: '-5%',
                 }}
@@ -291,7 +291,7 @@ export default function Schedule() {
 
             {node.position === 'bottom' && (
               <h2
-                className="text-white font-bangers tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
+                className="text-white font-kalam tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem', fontStyle: 'italic', fontWeight: 900,
                   textShadow: '2px 2px 0 #000, -1px -1px 0 #000',
@@ -307,8 +307,8 @@ export default function Schedule() {
 
       {/* Footer Cityscape */}
       <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none h-48 lg:h-72">
-        <img src="/skyline1.png" alt="Skyline Left"  className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
-        <img src="/skyline2.png" alt="Skyline Right" className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
+        <img src="/Schedule/skyline1.png" alt="Skyline Left"  className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
+        <img src="/Schedule/skyline1.png" alt="Skyline Right" className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
       </div>
     </div>
   );
