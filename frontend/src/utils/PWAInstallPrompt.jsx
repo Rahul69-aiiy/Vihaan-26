@@ -31,13 +31,6 @@ const PWAInstallPrompt = () => {
         return;
       }
 
-      // Check if app has been installed before
-      const hasInstalled = localStorage.getItem('pwa_installed');
-      if (hasInstalled) {
-        // console.log('✅ PWA previously installed');
-        setIsInstalled(true);
-        return;
-      }
       
       // console.log('ℹ️ No installation detected, ready to show prompt');
     };
