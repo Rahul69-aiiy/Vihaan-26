@@ -314,7 +314,6 @@ export default function Landing({ showPrizes, setShowPrizes, glowTrigger, setGlo
       )}
 
       <WD></WD>
-      <PWAInstallPrompt></PWAInstallPrompt>
     </>
   );
 }

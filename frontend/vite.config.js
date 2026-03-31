@@ -17,23 +17,9 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: 'autoUpdate',
 
-        strategies: 'generateSW',
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg,webp}'],
-          runtimeCaching: [
-            {
-              urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-              handler: 'CacheFirst',
-              options: {
-                cacheName: 'google-fonts-cache',
-                expiration: {
-                  maxEntries: 20,
-                  maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-                }
-              }
-            }
-          ]
-        },
+        strategies: 'injectManifest',
+        srcDir: 'src',
+        filename: 'sw.js',
 
         includeAssets: [
           'favicon.ico',

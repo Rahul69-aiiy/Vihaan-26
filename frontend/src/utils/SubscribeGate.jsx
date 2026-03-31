@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import PWAInstallPrompt from "./PWAInstallPrompt.jsx";
 
-export default function SubscribeGate({ onContinue }) {
+export default function SubscribeGate({ setNotifCookie, onContinue }) {
   const PUBLIC_VAPID_KEY = import.meta.env.VITE_PUBLIC_VAPID_KEY;
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -27,24 +28,20 @@ export default function SubscribeGate({ onContinue }) {
       onContinue();
       return;
     }
-    setLoading(true);
 
     try {
+      setLoading(true);
+
       // 1. Request permission
       const permission = await Notification.requestPermission();
       if (permission !== "granted") {
-        // If they denied, we still want to let them in!
-        alert("Notifications disabled. You can enable them later.");
-        onContinue(); 
+        alert("You denied permission for notifications.");
+        onContinue();
         return;
       }
 
-      // 2. Wait for service worker (with a timeout safety)
-      // If the SW isn't ready in 3 seconds, just move on
-      const registration = await Promise.race([
-        navigator.serviceWorker.ready,
-        new Promise((_, reject) => setTimeout(() => reject(new Error("SW Timeout")), 3000))
-      ]);
+      // 2. Wait for service worker
+      const registration = await navigator.serviceWorker.ready;
 
       // 3. Subscribe
       const subscription = await registration.pushManager.subscribe({
@@ -52,20 +49,29 @@ export default function SubscribeGate({ onContinue }) {
         applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY),
       });
 
-      // 4. Save to backend
-      await fetch(`${BACKEND_URL}/subs/subscribe`, {
+      // 4. Save subscription to backend
+      const res = await fetch(`${BACKEND_URL}/subs/subscribe`, {
         method: "POST",
         body: JSON.stringify(subscription),
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
-      alert("Successfully subscribed to notifications!");
+      if (res.status === 400) {
+        console.log("already subbed");
+        alert("You are already subscribed!");
+        setNotifCookie("true");
+      } else if (res.status === 201) {
+        alert("You are now subscribed to event reminders!");
+        setNotifCookie("true");
+      }
     } catch (error) {
-      console.error("Subscription flow error:", error);
-      alert("Subscription failed. You can try again later.");
+      console.error("Error during subscription:", error);
+      alert("An error occurred while subscribing. Please try again.");
     } finally {
       setLoading(false);
-      onContinue(); 
+      onContinue(); // 🚀 always continue to intro
     }
   };
 
@@ -103,7 +109,7 @@ export default function SubscribeGate({ onContinue }) {
           <button
             className="text-gray-400 text-sm hover:text-white transition"
             onClick={() => {
-              alert("You can subscribe anytime to get updates!");
+              alert("You can subscribe later from the homepage!");
               onContinue();
             }}
             disabled={loading}
@@ -112,6 +118,7 @@ export default function SubscribeGate({ onContinue }) {
           </button>
         </div>
       </motion.div>
+      <PWAInstallPrompt></PWAInstallPrompt>
     </motion.div>
   );
 }

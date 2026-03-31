@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import styles from '../utils/button/button.module.css';
 import clickEffect from "/Faqs/ButtonClicks/ClickEffect.svg";
+import PWAInstallPrompt from "../utils/PWAInstallPrompt.jsx";
 
 // Images
 import img1 from "/Gallerysvgs/c1-1.webp";
@@ -253,11 +254,12 @@ function Intro({ onComplete, audioRef, autoStart = false }) {
       {!hasStarted && (
         <div className="absolute bg-black inset-0 z-[10] bg-black flex items-center justify-center">
           {!autoStart && (
-            <div className={styles.centre} style={{transform: 'scale(1.4)', position: 'relative'}}>
-              <button 
-                type="button" 
-                className={styles.commonbutton} 
-                style={{ cursor: 'pointer', position: 'relative', overflow: 'visible' }} 
+            <>
+            <div className={styles.centre} style={{ transform: 'scale(1.4)', position: 'relative' }}>
+              <button
+                type="button"
+                className={styles.commonbutton}
+                style={{ cursor: 'pointer', position: 'relative', overflow: 'visible' }}
                 onClick={handleStart}
               >
                 {showClickEffect && (
@@ -266,18 +268,19 @@ function Intro({ onComplete, audioRef, autoStart = false }) {
                     alt=""
                     style={{
                       position: 'absolute',
-                      marginTop: '-1.5rem',    
+                      marginTop: '-1.5rem',
                       transform: 'scale(0)',
                       pointerEvents: 'none',
                       zIndex: 11,
                       animation: 'comicClickPop 0.35s ease-out',
-                    }}
-                  />
+                    }} />
                 )}
                 <div className={styles.top} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)', color: 'black' }}>START</div>
                 <div className={styles.bottom} style={{ background: 'linear-gradient(180deg, #FF8C1A 0%, #FFD23F 100%)' }}></div>
               </button>
             </div>
+            <PWAInstallPrompt></PWAInstallPrompt>
+            </>
           )}
         </div>
       )}

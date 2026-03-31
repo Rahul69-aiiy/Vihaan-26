@@ -67,7 +67,7 @@ const PWAInstallPrompt = () => {
     const timer = setTimeout(() => {
       // console.log('Showing PWA install prompt');
       setIsVisible(true);
-    }, 2500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [deferredPrompt]);

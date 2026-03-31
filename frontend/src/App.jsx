@@ -123,8 +123,9 @@ function App() {
       {/* SUBSCRIBE GATE */}
       {showGate && (
         <SubscribeGate
+          setNotifCookie={(status) => setNotifCookie("push_subscription_status", status)}
+          
           onContinue={() => {
-            setNotifCookie("push_subscription_status", "true");
 
             introAudioRef.current.currentTime = 0;
             introAudioRef.current.volume = 0.5;

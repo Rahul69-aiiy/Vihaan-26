@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { Analytics } from "@vercel/analytics/react"
 
 // Service worker registration is handled automatically by VitePWA with registerType: 'autoUpdate'
 if ('serviceWorker' in navigator) {
@@ -13,5 +14,6 @@ if ('serviceWorker' in navigator) {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
+    <Analytics />
   </StrictMode>,
 )
